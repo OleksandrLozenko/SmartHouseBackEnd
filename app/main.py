@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from fastapi import FastAPI
+from database import test_connection
 
 app = FastAPI()
 
@@ -35,3 +37,7 @@ async def toggle_light(command: Command):
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
+@app.on_event("startup")
+async def startup():
+    await test_connection()

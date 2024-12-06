@@ -9,3 +9,4 @@ Thumbs.db
 *.log
 *.csv 
 *.tmp
+__init__.py
